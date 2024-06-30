@@ -11,10 +11,13 @@ mixer.init()
 from settings import *
 from load_resources import load_resources
 #from utils import ItemBox
+from graphics_handler import GraphicsHandler
 
 # Set up the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Shooter')
+
+graphics_handler = GraphicsHandler(screen)
 
 # Initialize clock
 clock = pygame.time.Clock()
@@ -70,21 +73,6 @@ class ItemBox(pygame.sprite.Sprite):
                 player.grenades += 3
             # delete the item box
             self.kill()
-
-
-def draw_text(text, font, text_col, x, y):
-    img = font.render(text, True, text_col)
-    screen.blit(img, (x, y))
-
-
-def draw_bg():
-    screen.fill(BG)
-    width = sky_img.get_width()
-    for x in range(5):
-        screen.blit(sky_img, ((x * width) - bg_scroll * 0.5, 0))
-        screen.blit(mountain_img, ((x * width) - bg_scroll * 0.6, SCREEN_HEIGHT - mountain_img.get_height() - 300))
-        screen.blit(pine1_img, ((x * width) - bg_scroll * 0.7, SCREEN_HEIGHT - pine1_img.get_height() - 150))
-        screen.blit(pine2_img, ((x * width) - bg_scroll * 0.8, SCREEN_HEIGHT - pine2_img.get_height()))
 
 
 # function to reset level
@@ -624,17 +612,17 @@ while run:
             run = False
     else:
         # update background
-        draw_bg()
+        graphics_handler.draw_bg(sky_img, mountain_img, pine1_img, pine2_img, bg_scroll)
         # draw world map
         world.draw()
         # show player health
         health_bar.draw(player.health)
         # show ammo
-        draw_text('AMMO: ', font, WHITE, 10, 35)
+        graphics_handler.draw_text('AMMO: ', font, WHITE, 10, 35)
         for x in range(player.ammo):
             screen.blit(bullet_img, (90 + (x * 10), 40))
         # show grenades
-        draw_text('GRENADES: ', font, WHITE, 10, 60)
+        graphics_handler.draw_text('GRENADES: ', font, WHITE, 10, 60)
         for x in range(player.grenades):
             screen.blit(grenade_img, (135 + (x * 15), 60))
 
