@@ -13,6 +13,8 @@ from load_resources import load_resources
 from item_box import ItemBox
 from graphics_handler import GraphicsHandler
 from screen_fade import ScreenFade
+from bullet import Bullet
+
 
 
 # Set up the screen
@@ -50,32 +52,7 @@ item_boxes = resources['images']['boxes']
 
 # Define fonts
 font = pygame.font.SysFont('Futura', 30)
-"""
-class ItemBox(pygame.sprite.Sprite):
-    def __init__(self, item_type, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.item_type = item_type
-        self.image = item_boxes[self.item_type]
-        self.rect = self.image.get_rect()
-        self.rect.midtop = (x + TILE_SIZE // 2, y + (TILE_SIZE - self.image.get_height()))
 
-    def update(self):
-        # scroll
-        self.rect.x += screen_scroll
-        # check if the player has picked up the box
-        if pygame.sprite.collide_rect(self, player):
-            # check what kind of box it was
-            if self.item_type == 'Health':
-                player.health += 25
-                if player.health > player.max_health:
-                    player.health = player.max_health
-            elif self.item_type == 'Ammo':
-                player.ammo += 15
-            elif self.item_type == 'Grenade':
-                player.grenades += 3
-            # delete the item box
-            self.kill()
-"""
 # function to reset level
 def reset_level():
     enemy_group.empty()
@@ -238,7 +215,7 @@ class Soldier(pygame.sprite.Sprite):
         if self.shoot_cooldown == 0 and self.ammo > 0:
             self.shoot_cooldown = 20
             bullet = Bullet(self.rect.centerx + (0.75 * self.rect.size[0] * self.direction), self.rect.centery,
-                            self.direction)
+                            self.direction, bullet_img)
             bullet_group.add(bullet)
             # reduce ammo
             self.ammo -= 1
@@ -415,39 +392,6 @@ class HealthBar():
         pygame.draw.rect(screen, RED, (self.x, self.y, 150, 20))
         pygame.draw.rect(screen, GREEN, (self.x, self.y, 150 * ratio, 20))
 
-
-class Bullet(pygame.sprite.Sprite):
-    def __init__(self, x, y, direction):
-        pygame.sprite.Sprite.__init__(self)
-        self.speed = 10
-        self.image = bullet_img
-        self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
-        self.direction = direction
-
-    def update(self):
-        # move bullet
-        self.rect.x += (self.direction * self.speed) + screen_scroll
-        # check if bullet has gone off screen
-        if self.rect.right < 0 or self.rect.left > SCREEN_WIDTH:
-            self.kill()
-        # check for collision with level
-        for tile in world.obstacle_list:
-            if tile[1].colliderect(self.rect):
-                self.kill()
-
-        # check collision with characters
-        if pygame.sprite.spritecollide(player, bullet_group, False):
-            if player.alive:
-                player.health -= 5
-                self.kill()
-        for enemy in enemy_group:
-            if pygame.sprite.spritecollide(enemy, bullet_group, False):
-                if enemy.alive:
-                    enemy.health -= 25
-                    self.kill()
-
-
 class Grenade(pygame.sprite.Sprite):
     def __init__(self, x, y, direction):
         pygame.sprite.Sprite.__init__(self)
@@ -610,7 +554,8 @@ while run:
             enemy.draw()
 
         # update and draw groups
-        bullet_group.update()
+        for bullet in bullet_group:
+            bullet.update(screen_scroll, bullet_group, world.obstacle_list)
         grenade_group.update()
         explosion_group.update()
         for item_box in item_box_group:
