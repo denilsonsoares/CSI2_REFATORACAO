@@ -138,10 +138,12 @@ class Soldier(pygame.sprite.Sprite):
                     or (self.rect.left < SCROLL_THRESH and bg_scroll > abs(dx)):
                 self.rect.x -= dx
                 screen_scroll = -dx
+            else:
+                screen_scroll = 0
 
         return screen_scroll, level_complete
 
-    def shoot(self, bullet_img, shot_fx):
+    def shoot(self, bullet_img, shot_fx, sprite_groups):
         if self.shoot_cooldown == 0 and self.ammo > 0:
             self.shoot_cooldown = 20
             bullet = Bullet(self.rect.centerx + (0.75 * self.rect.size[0] * self.direction),
