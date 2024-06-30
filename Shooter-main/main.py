@@ -10,7 +10,7 @@ pygame.init()
 mixer.init()
 from settings import *
 from load_resources import load_resources
-#from utils import ItemBox
+from item_box import ItemBox
 from graphics_handler import GraphicsHandler
 
 # Set up the screen
@@ -48,7 +48,7 @@ item_boxes = resources['images']['boxes']
 
 # Define fonts
 font = pygame.font.SysFont('Futura', 30)
-
+"""
 class ItemBox(pygame.sprite.Sprite):
     def __init__(self, item_type, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -73,8 +73,7 @@ class ItemBox(pygame.sprite.Sprite):
                 player.grenades += 3
             # delete the item box
             self.kill()
-
-
+"""
 # function to reset level
 def reset_level():
     enemy_group.empty()
@@ -344,13 +343,13 @@ class World():
                         enemy = Soldier('enemy', x * TILE_SIZE, y * TILE_SIZE, 1.65, 2, 20, 0)
                         enemy_group.add(enemy)
                     elif tile == 17:  # create ammo box
-                        item_box = ItemBox('Ammo', x * TILE_SIZE, y * TILE_SIZE)
+                        item_box = ItemBox('Ammo', x * TILE_SIZE, y * TILE_SIZE, item_boxes['Ammo'])
                         item_box_group.add(item_box)
                     elif tile == 18:  # create grenade box
-                        item_box = ItemBox('Grenade', x * TILE_SIZE, y * TILE_SIZE)
+                        item_box = ItemBox('Grenade', x * TILE_SIZE, y * TILE_SIZE, item_boxes['Grenade'])
                         item_box_group.add(item_box)
                     elif tile == 19:  # create health box
-                        item_box = ItemBox('Health', x * TILE_SIZE, y * TILE_SIZE)
+                        item_box = ItemBox('Health', x * TILE_SIZE, y * TILE_SIZE, item_boxes['Health'])
                         item_box_group.add(item_box)
                     elif tile == 20:  # create exit
                         exit = Exit(img, x * TILE_SIZE, y * TILE_SIZE)
@@ -639,7 +638,7 @@ while run:
         grenade_group.update()
         explosion_group.update()
         for item_box in item_box_group:
-            item_box.update()
+            item_box.update(screen_scroll, player)
         decoration_group.update()
         water_group.update()
         exit_group.update()

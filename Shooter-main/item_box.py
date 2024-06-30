@@ -1,20 +1,14 @@
-#utils.py
 import pygame
 from settings import TILE_SIZE
-from load_resources import load_resources
-resources = load_resources()
-item_boxes = resources['images']['boxes']
-from main import screen_scroll, player
-
 class ItemBox(pygame.sprite.Sprite):
-    def __init__(self, item_type, x, y):
+    def __init__(self, item_type, x, y, image):
         pygame.sprite.Sprite.__init__(self)
         self.item_type = item_type
-        self.image = item_boxes[self.item_type]
+        self.image = image
         self.rect = self.image.get_rect()
         self.rect.midtop = (x + TILE_SIZE // 2, y + (TILE_SIZE - self.image.get_height()))
 
-    def update(self, player, screen_scroll):
+    def update(self, screen_scroll, player):
         # scroll
         self.rect.x += screen_scroll
         # check if the player has picked up the box
