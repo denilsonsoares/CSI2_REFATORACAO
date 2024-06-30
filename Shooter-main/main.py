@@ -14,8 +14,7 @@ from item_box import ItemBox
 from graphics_handler import GraphicsHandler
 from screen_fade import ScreenFade
 from bullet import Bullet
-
-
+from grenade import Grenade
 
 # Set up the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -392,63 +391,6 @@ class HealthBar():
         pygame.draw.rect(screen, RED, (self.x, self.y, 150, 20))
         pygame.draw.rect(screen, GREEN, (self.x, self.y, 150 * ratio, 20))
 
-class Grenade(pygame.sprite.Sprite):
-    def __init__(self, x, y, direction):
-        pygame.sprite.Sprite.__init__(self)
-        self.timer = 100
-        self.vel_y = -11
-        self.speed = 7
-        self.image = grenade_img
-        self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
-        self.width = self.image.get_width()
-        self.height = self.image.get_height()
-        self.direction = direction
-
-    def update(self):
-        self.vel_y += GRAVITY
-        dx = self.direction * self.speed
-        dy = self.vel_y
-
-        # check for collision with level
-        for tile in world.obstacle_list:
-            # check collision with walls
-            if tile[1].colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
-                self.direction *= -1
-                dx = self.direction * self.speed
-            # check for collision in the y direction
-            if tile[1].colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
-                self.speed = 0
-                # check if below the ground, i.e. thrown up
-                if self.vel_y < 0:
-                    self.vel_y = 0
-                    dy = tile[1].bottom - self.rect.top
-                # check if above the ground, i.e. falling
-                elif self.vel_y >= 0:
-                    self.vel_y = 0
-                    dy = tile[1].top - self.rect.bottom
-
-        # update grenade position
-        self.rect.x += dx + screen_scroll
-        self.rect.y += dy
-
-        # countdown timer
-        self.timer -= 1
-        if self.timer <= 0:
-            self.kill()
-            grenade_fx.play()
-            explosion = Explosion(self.rect.x, self.rect.y, 0.5)
-            explosion_group.add(explosion)
-            # do damage to anyone that is nearby
-            if abs(self.rect.centerx - player.rect.centerx) < TILE_SIZE * 2 and \
-                    abs(self.rect.centery - player.rect.centery) < TILE_SIZE * 2:
-                player.health -= 50
-            for enemy in enemy_group:
-                if abs(self.rect.centerx - enemy.rect.centerx) < TILE_SIZE * 2 and \
-                        abs(self.rect.centery - enemy.rect.centery) < TILE_SIZE * 2:
-                    enemy.health -= 50
-
-
 class Explosion(pygame.sprite.Sprite):
     def __init__(self, x, y, scale):
         pygame.sprite.Sprite.__init__(self)
@@ -556,8 +498,10 @@ while run:
         # update and draw groups
         for bullet in bullet_group:
             bullet.update(screen_scroll, bullet_group, world.obstacle_list)
-        grenade_group.update()
-        explosion_group.update()
+        for grenade in grenade_group:
+            grenade.update(screen_scroll, world.obstacle_list, explosion_group)
+        for explosion in explosion_group:
+            explosion.update(screen_scroll)
         for item_box in item_box_group:
             item_box.update(screen_scroll, player)
             item_box.update(screen_scroll, player)
@@ -587,7 +531,7 @@ while run:
             # throw grenades
             elif grenade and grenade_thrown == False and player.grenades > 0:
                 grenade = Grenade(player.rect.centerx + (0.5 * player.rect.size[0] * player.direction), \
-                                  player.rect.top, player.direction)
+                                  player.rect.top, player.direction, grenade_img, grenade_config)
                 grenade_group.add(grenade)
                 # reduce grenades
                 player.grenades -= 1

@@ -37,4 +37,7 @@ GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 PINK = (235, 65, 54)
 
-
+grenade_config = {
+    'GRAVITY': 0.5,  # Valor de gravidade para ser usado no jogo
+    'EXPLOSION_SPEED': 4  # Velocidade da animação da explosão
+}
