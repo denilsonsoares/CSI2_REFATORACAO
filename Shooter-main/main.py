@@ -18,6 +18,8 @@ from grenade import Grenade
 from water import Water
 from exit import Exit
 from decoration import Decoration
+from health_bar import HealthBar
+
 
 # Set up the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -344,23 +346,6 @@ class World():
             screen.blit(tile[0], tile[1])
 
 
-class HealthBar():
-    def __init__(self, x, y, health, max_health):
-        self.x = x
-        self.y = y
-        self.health = health
-        self.max_health = max_health
-
-    def draw(self, health):
-        # update with new health
-        self.health = health
-        # calculate health ratio
-        ratio = self.health / self.max_health
-        pygame.draw.rect(screen, BLACK, (self.x - 2, self.y - 2, 154, 24))
-        pygame.draw.rect(screen, RED, (self.x, self.y, 150, 20))
-        pygame.draw.rect(screen, GREEN, (self.x, self.y, 150 * ratio, 20))
-
-
 # create screen fades
 intro_fade = ScreenFade(1, BLACK, 4)
 death_fade = ScreenFade(2, PINK, 4)
@@ -416,7 +401,7 @@ while run:
         # draw world map
         world.draw()
         # show player health
-        health_bar.draw(player.health)
+        health_bar.draw(screen,player.health)
         # show ammo
         graphics_handler.draw_text('AMMO: ', font, WHITE, 10, 35)
         for x in range(player.ammo):
@@ -505,7 +490,7 @@ while run:
                     player, health_bar = world.process_data(world_data)
         else:
             screen_scroll = 0
-            if death_fade.fade():
+            if death_fade.fade(screen):
                 if restart_button.draw(screen):
                     death_fade.fade_counter = 0
                     start_intro = True
