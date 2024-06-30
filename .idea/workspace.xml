@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5021c284-03ec-4270-af4c-1bedd8977412" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Shooter-main/soldier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/item_box.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/item_box.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shooter-main/screen_fade.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shooter-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719689893755</updated>
-      <workItem from="1719689895787" duration="11692000" />
+      <workItem from="1719689895787" duration="11850000" />
     </task>
     <servers />
   </component>
@@ -79,7 +77,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$load_resources.coverage" NAME="load_resources Coverage Results" MODIFIED="1719705782946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
-    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$main.coverage" NAME="main Coverage Results" MODIFIED="1719708017760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
+    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$main.coverage" NAME="main Coverage Results" MODIFIED="1719708965207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
     <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$shooter_tut13.coverage" NAME="shooter_tut13 Coverage Results" MODIFIED="1719690565410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
   </component>
 </project>

@@ -12,6 +12,8 @@ from settings import *
 from load_resources import load_resources
 from item_box import ItemBox
 from graphics_handler import GraphicsHandler
+from screen_fade import ScreenFade
+
 
 # Set up the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -534,32 +536,6 @@ class Explosion(pygame.sprite.Sprite):
             else:
                 self.image = self.images[self.frame_index]
 
-
-class ScreenFade():
-    def __init__(self, direction, colour, speed):
-        self.direction = direction
-        self.colour = colour
-        self.speed = speed
-        self.fade_counter = 0
-
-    def fade(self):
-        fade_complete = False
-        self.fade_counter += self.speed
-        if self.direction == 1:  # whole screen fade
-            pygame.draw.rect(screen, self.colour, (0 - self.fade_counter, 0, SCREEN_WIDTH // 2, SCREEN_HEIGHT))
-            pygame.draw.rect(screen, self.colour,
-                             (SCREEN_WIDTH // 2 + self.fade_counter, 0, SCREEN_WIDTH, SCREEN_HEIGHT))
-            pygame.draw.rect(screen, self.colour, (0, 0 - self.fade_counter, SCREEN_WIDTH, SCREEN_HEIGHT // 2))
-            pygame.draw.rect(screen, self.colour,
-                             (0, SCREEN_HEIGHT // 2 + self.fade_counter, SCREEN_WIDTH, SCREEN_HEIGHT))
-        if self.direction == 2:  # vertical screen fade down
-            pygame.draw.rect(screen, self.colour, (0, 0, SCREEN_WIDTH, 0 + self.fade_counter))
-        if self.fade_counter >= SCREEN_WIDTH:
-            fade_complete = True
-
-        return fade_complete
-
-
 # create screen fades
 intro_fade = ScreenFade(1, BLACK, 4)
 death_fade = ScreenFade(2, PINK, 4)
@@ -639,6 +615,7 @@ while run:
         explosion_group.update()
         for item_box in item_box_group:
             item_box.update(screen_scroll, player)
+            item_box.update(screen_scroll, player)
         decoration_group.update()
         water_group.update()
         exit_group.update()
@@ -653,7 +630,7 @@ while run:
 
         # show intro
         if start_intro == True:
-            if intro_fade.fade():
+            if intro_fade.fade(screen):
                 start_intro = False
                 intro_fade.fade_counter = 0
 
