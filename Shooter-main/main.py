@@ -15,6 +15,9 @@ from graphics_handler import GraphicsHandler
 from screen_fade import ScreenFade
 from bullet import Bullet
 from grenade import Grenade
+from water import Water
+from exit import Exit
+from decoration import Decoration
 
 # Set up the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -341,40 +344,6 @@ class World():
             screen.blit(tile[0], tile[1])
 
 
-class Decoration(pygame.sprite.Sprite):
-    def __init__(self, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.midtop = (x + TILE_SIZE // 2, y + (TILE_SIZE - self.image.get_height()))
-
-    def update(self):
-        self.rect.x += screen_scroll
-
-
-class Water(pygame.sprite.Sprite):
-    def __init__(self, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.midtop = (x + TILE_SIZE // 2, y + (TILE_SIZE - self.image.get_height()))
-
-    def update(self):
-        self.rect.x += screen_scroll
-
-
-class Exit(pygame.sprite.Sprite):
-    def __init__(self, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.midtop = (x + TILE_SIZE // 2, y + (TILE_SIZE - self.image.get_height()))
-
-    def update(self):
-        self.rect.x += screen_scroll
-
-
-
 class HealthBar():
     def __init__(self, x, y, health, max_health):
         self.x = x
@@ -391,36 +360,6 @@ class HealthBar():
         pygame.draw.rect(screen, RED, (self.x, self.y, 150, 20))
         pygame.draw.rect(screen, GREEN, (self.x, self.y, 150 * ratio, 20))
 
-class Explosion(pygame.sprite.Sprite):
-    def __init__(self, x, y, scale):
-        pygame.sprite.Sprite.__init__(self)
-        self.images = []
-        for num in range(1, 6):
-            img = pygame.image.load(f'img/explosion/exp{num}.png').convert_alpha()
-            img = pygame.transform.scale(img, (int(img.get_width() * scale), int(img.get_height() * scale)))
-            self.images.append(img)
-        self.frame_index = 0
-        self.image = self.images[self.frame_index]
-        self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
-        self.counter = 0
-
-    def update(self):
-        # scroll
-        self.rect.x += screen_scroll
-
-        EXPLOSION_SPEED = 4
-        # update explosion amimation
-        self.counter += 1
-
-        if self.counter >= EXPLOSION_SPEED:
-            self.counter = 0
-            self.frame_index += 1
-            # if the animation is complete then delete the explosion
-            if self.frame_index >= len(self.images):
-                self.kill()
-            else:
-                self.image = self.images[self.frame_index]
 
 # create screen fades
 intro_fade = ScreenFade(1, BLACK, 4)
@@ -496,6 +435,7 @@ while run:
             enemy.draw()
 
         # update and draw groups
+        #update
         for bullet in bullet_group:
             bullet.update(screen_scroll, bullet_group, world.obstacle_list)
         for grenade in grenade_group:
@@ -505,9 +445,13 @@ while run:
         for item_box in item_box_group:
             item_box.update(screen_scroll, player)
             item_box.update(screen_scroll, player)
-        decoration_group.update()
-        water_group.update()
-        exit_group.update()
+        for decoration in decoration_group:
+            decoration.update(screen_scroll)
+        for water in water_group:
+            water.update(screen_scroll)
+        for exit in exit_group:
+            exit.update(screen_scroll)
+        #draw
         bullet_group.draw(screen)
         grenade_group.draw(screen)
         explosion_group.draw(screen)
