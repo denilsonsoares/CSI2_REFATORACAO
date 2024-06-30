@@ -1,5 +1,5 @@
 import pygame
-from settings import *
+from settings import BG, SCREEN_HEIGHT
 
 class GraphicsHandler:
     def __init__(self, screen):

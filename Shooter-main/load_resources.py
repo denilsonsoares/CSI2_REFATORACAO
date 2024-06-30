@@ -1,4 +1,4 @@
-#load_resources
+#load_resources.py
 import pygame
 from settings import TILE_SIZE, TILE_TYPES
 
