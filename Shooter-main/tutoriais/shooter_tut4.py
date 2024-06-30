@@ -25,7 +25,7 @@ shoot = False
 
 #load images
 #bullet
-bullet_img = pygame.image.load('img/icons/bullet.png').convert_alpha()
+bullet_img = pygame.image.load('../img/icons/bullet.png').convert_alpha()
 
 
 #define colours
