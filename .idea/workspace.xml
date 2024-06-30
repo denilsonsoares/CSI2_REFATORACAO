@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5021c284-03ec-4270-af4c-1bedd8977412" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Shooter-main/load_resources.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shooter-main/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shooter-main/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shooter-main/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CSI2_REFATORACAO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CSI2_REFATORACAO.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/button.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/button.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut11.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut11.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut12.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut12.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut6.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut7.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut8.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut9.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/tutoriais/shooter_tut9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shooter-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shooter-main/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/item_box.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719689893755</updated>
-      <workItem from="1719689895787" duration="9218000" />
+      <workItem from="1719689895787" duration="10177000" />
     </task>
     <servers />
   </component>
@@ -94,7 +78,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$load_resources.coverage" NAME="load_resources Coverage Results" MODIFIED="1719705782946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
-    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$main.coverage" NAME="main Coverage Results" MODIFIED="1719706443269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
+    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$main.coverage" NAME="main Coverage Results" MODIFIED="1719707366583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
     <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$shooter_tut13.coverage" NAME="shooter_tut13 Coverage Results" MODIFIED="1719690565410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
   </component>
 </project>

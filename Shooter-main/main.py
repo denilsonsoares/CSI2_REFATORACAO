@@ -650,7 +650,8 @@ while run:
         bullet_group.update()
         grenade_group.update()
         explosion_group.update()
-        item_box_group.update()
+        for item_box in item_box_group:
+            item_box.update()
         decoration_group.update()
         water_group.update()
         exit_group.update()

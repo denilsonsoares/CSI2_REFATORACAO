@@ -4,6 +4,8 @@ from settings import TILE_SIZE
 from load_resources import load_resources
 resources = load_resources()
 item_boxes = resources['images']['boxes']
+from main import screen_scroll, player
+
 class ItemBox(pygame.sprite.Sprite):
     def __init__(self, item_type, x, y):
         pygame.sprite.Sprite.__init__(self)
