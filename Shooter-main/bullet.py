@@ -20,7 +20,7 @@ class Bullet(pygame.sprite.Sprite):
             self.kill()
 
         # Check for collision with level
-        for tile in world.obstacle_list:
+        for tile in world.obstacle_list:  # Access obstacle_list through the world object
             if tile[1].colliderect(self.rect):
                 self.kill()
 
@@ -36,3 +36,4 @@ class Bullet(pygame.sprite.Sprite):
                 if enemy.alive:
                     enemy.health -= 25
                     self.kill()
+

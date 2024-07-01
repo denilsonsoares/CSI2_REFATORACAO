@@ -7,6 +7,8 @@
     <list default="true" id="5021c284-03ec-4270-af4c-1bedd8977412" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shooter-main/bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/bullet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shooter-main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shooter-main/soldier.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/soldier.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,23 +33,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.load_resources.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.shooter_tut13.executor": "Run",
-    "Python.soldier.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.load_resources.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.shooter_tut13.executor&quot;: &quot;Run&quot;,
+    &quot;Python.soldier.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Denil\OneDrive\Documentos\GitHub\CSI2_REFATORACAO\Shooter-main\tutoriais" />
@@ -70,7 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1719689893755</updated>
       <workItem from="1719689895787" duration="14325000" />
-      <workItem from="1719750088066" duration="20229000" />
+      <workItem from="1719750088066" duration="20405000" />
+      <workItem from="1719843145630" duration="1208000" />
     </task>
     <servers />
   </component>
@@ -90,8 +93,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$load_resources.coverage" NAME="load_resources Coverage Results" MODIFIED="1719705782946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
-    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$main.coverage" NAME="main Coverage Results" MODIFIED="1719779192640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
+    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$main.coverage" NAME="main Coverage Results" MODIFIED="1719851216462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
     <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$soldier.coverage" NAME="soldier Coverage Results" MODIFIED="1719776857151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
-    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$shooter_tut13.coverage" NAME="shooter_tut13 Coverage Results" MODIFIED="1719709273986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
+    <SUITE FILE_PATH="coverage/CSI2_REFATORACAO$shooter_tut13.coverage" NAME="shooter_tut13 Coverage Results" MODIFIED="1719851297712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Shooter-main" />
   </component>
 </project>

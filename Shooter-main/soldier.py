@@ -147,7 +147,7 @@ class Soldier(pygame.sprite.Sprite):
         if self.shoot_cooldown == 0 and self.ammo > 0:
             self.shoot_cooldown = 20
             bullet = Bullet(self.rect.centerx + (0.75 * self.rect.size[0] * self.direction),
-                            self.rect.centery, self.direction, bullet_img)
+                            self.rect.centery, self.direction, bullet_img,sprite_groups)
             self.sprite_groups.bullet_group.add(bullet)
             # reduce ammo
             self.ammo -= 1
@@ -165,7 +165,7 @@ class Soldier(pygame.sprite.Sprite):
                 # Stop running and face the player
                 self.update_action(0)  # 0: idle
                 # Shoot
-                self.shoot(self.bullet_img, self.shot_fx)
+                self.shoot(self.bullet_img, self.shot_fx, self.sprite_groups)
             else:
                 if self.idling == False:
                     if self.direction == 1:

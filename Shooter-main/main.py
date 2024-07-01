@@ -92,7 +92,7 @@ while run:
         # update and draw groups
         #update
         for bullet in sprite_groups.bullet_group:
-            bullet.update(screen_scroll, sprite_groups.bullet_group, world.obstacle_list)
+            bullet.update(player, world, screen_scroll)
         for grenade in sprite_groups.grenade_group:
             grenade.update(screen_scroll, world.obstacle_list, sprite_groups.explosion_group)
         for explosion in sprite_groups.explosion_group:
@@ -126,7 +126,7 @@ while run:
         if player.alive:
             # shoot bullets
             if shoot:
-                player.shoot(bullet_img, shot_fx)
+                player.shoot(bullet_img, shot_fx, sprite_groups)
             # throw grenades
             elif grenade and grenade_thrown == False and player.grenades > 0:
                 grenade = Grenade(player.rect.centerx + (0.5 * player.rect.size[0] * player.direction), \
