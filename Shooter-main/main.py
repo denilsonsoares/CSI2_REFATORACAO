@@ -86,19 +86,20 @@ while run:
 
         for enemy in sprite_groups.enemy_group:
             enemy.ai(player, screen_scroll, world, bg_scroll)
-            enemy.update()
             enemy.draw(screen)
+            enemy.update()
+            
+
 
         # update and draw groups
         #update
         for bullet in sprite_groups.bullet_group:
             bullet.update(player, world, screen_scroll)
         for grenade in sprite_groups.grenade_group:
-            grenade.update(screen_scroll, world.obstacle_list, sprite_groups.explosion_group)
+            grenade.update(screen_scroll, world.obstacle_list, sprite_groups.explosion_group, player, sprite_groups.enemy_group)
         for explosion in sprite_groups.explosion_group:
             explosion.update(screen_scroll)
         for item_box in sprite_groups.item_box_group:
-            item_box.update(screen_scroll, player)
             item_box.update(screen_scroll, player)
         for decoration in sprite_groups.decoration_group:
             decoration.update(screen_scroll)
@@ -129,8 +130,7 @@ while run:
                 player.shoot(bullet_img, shot_fx, sprite_groups)
             # throw grenades
             elif grenade and grenade_thrown == False and player.grenades > 0:
-                grenade = Grenade(player.rect.centerx + (0.5 * player.rect.size[0] * player.direction), \
-                                  player.rect.top, player.direction, grenade_img, grenade_config)
+                grenade = Grenade(player.rect.centerx + (0.5 * player.rect.size[0] * player.direction), player.rect.top, player.direction, grenade_img, grenade_config)
                 sprite_groups.grenade_group.add(grenade)
                 # reduce grenades
                 player.grenades -= 1
@@ -148,7 +148,7 @@ while run:
                 start_intro = True
                 level += 1
                 bg_scroll = 0
-                world_data = sprite_groups.reset_level(10, 10)
+                world_data = sprite_groups.reset_level(16, 150)
                 if level <= MAX_LEVELS:
                     # load in level data and create world
                     with open(f'level{level}_data.csv', newline='') as csvfile:
@@ -157,7 +157,7 @@ while run:
                             for y, tile in enumerate(row):
                                 world_data[x][y] = int(tile)
                     world = World(sprite_groups)
-                    player, health_bar = world.process_data(world_data)
+                    player, health_bar = world.process_data(world_data, img_list, item_boxes, bullet_img, shot_fx)
         else:
             screen_scroll = 0
             if death_fade.fade(screen):
@@ -165,15 +165,15 @@ while run:
                     death_fade.fade_counter = 0
                     start_intro = True
                     bg_scroll = 0
-                    world_data = sprite_groups.reset_level(10, 10)
+                    world_data = sprite_groups.reset_level(16, 150)
                     # load in level data and create world
                     with open(f'level{level}_data.csv', newline='') as csvfile:
                         reader = csv.reader(csvfile, delimiter=',')
                         for x, row in enumerate(reader):
                             for y, tile in enumerate(row):
                                 world_data[x][y] = int(tile)
-                    world = World()
-                    player, health_bar = world.process_data(world_data)
+                    world = World(sprite_groups)
+                    player, health_bar = world.process_data(world_data , img_list, item_boxes, bullet_img, shot_fx)
 
     for event in pygame.event.get():
         # quit game
@@ -189,6 +189,7 @@ while run:
                 shoot = True
             if event.key == pygame.K_q:
                 grenade = True
+                grenade_thrown = False
             if event.key == pygame.K_w and player.alive:
                 player.jump = True
                 jump_fx.play()
@@ -205,7 +206,7 @@ while run:
                 shoot = False
             if event.key == pygame.K_q:
                 grenade = False
-                grenade_thrown = False
+                grenade_thrown = True
 
     pygame.display.update()
 

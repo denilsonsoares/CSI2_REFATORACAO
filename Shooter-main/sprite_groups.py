@@ -1,5 +1,6 @@
 #sprite_groups.py
 import pygame
+
 class SpriteGroups:
     def __init__(self):
         self.enemy_group = pygame.sprite.Group()

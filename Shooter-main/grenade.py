@@ -1,5 +1,6 @@
 import pygame
 from explosion import Explosion  # Certifique-se de que a classe Explosion já tenha sido movida
+from settings import TILE_SIZE
 
 class Grenade(pygame.sprite.Sprite):
     def __init__(self, x, y, direction, grenade_img, settings):
@@ -15,7 +16,7 @@ class Grenade(pygame.sprite.Sprite):
         self.direction = direction
         self.settings = settings  # Pode incluir GRAVITY e outros parâmetros
 
-    def update(self, screen_scroll, world_obstacle_list, explosion_group):
+    def update(self, screen_scroll, world_obstacle_list, explosion_group, player, enemy_group):
         self.vel_y += self.settings['GRAVITY']
         dx = self.direction * self.speed
         dy = self.vel_y
@@ -45,3 +46,8 @@ class Grenade(pygame.sprite.Sprite):
             self.kill()
             explosion = Explosion(self.rect.x, self.rect.y, 0.5)
             explosion_group.add(explosion)
+            if abs(self.rect.centerx - player.rect.centerx) < TILE_SIZE * 2 and abs(self.rect.centery - player.rect.centery) < TILE_SIZE * 2:
+                player.health -= 50
+            for enemy in enemy_group:
+                 if abs(self.rect.centerx - enemy.rect.centerx) < TILE_SIZE * 2 and abs(self.rect.centery - enemy.rect.centery) < TILE_SIZE * 2:
+                     enemy.health -= 50

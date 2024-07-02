@@ -173,8 +173,7 @@ class Soldier(pygame.sprite.Sprite):
                     else:
                         ai_moving_right = False
                     ai_moving_left = not ai_moving_right
-                    screen_scroll, level_complete = self.move(ai_moving_left, ai_moving_right, screen_scroll, world,
-                                                              bg_scroll)
+                    screen_scroll, level_complete = self.move(ai_moving_left, ai_moving_right, screen_scroll, world,bg_scroll)
                     self.update_action(1)  # 1: run
                     self.move_counter += 1
                     # Update AI vision as the enemy moves
@@ -189,8 +188,8 @@ class Soldier(pygame.sprite.Sprite):
                     if self.idling_counter <= 0:
                         self.idling = False
 
-            # Scroll
-            self.rect.x += screen_scroll
+        # Scroll
+        self.rect.x += screen_scroll
 
     def update_animation(self):
         # update animation
@@ -219,8 +218,8 @@ class Soldier(pygame.sprite.Sprite):
     def check_alive(self):
         if self.health <= 0:
             self.health = 0
-            self.speed = 0
             self.alive = False
+
             self.update_action(3)
 
     def draw(self, screen):
