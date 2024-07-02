@@ -3,12 +3,13 @@ from explosion import Explosion  # Certifique-se de que a classe Explosion já t
 from settings import TILE_SIZE
 
 class Grenade(pygame.sprite.Sprite):
-    def __init__(self, x, y, direction, grenade_img, settings):
+    def __init__(self, x, y, direction, grenade_img, grenade_fx, settings):
         pygame.sprite.Sprite.__init__(self)
         self.timer = 100
         self.vel_y = -11
         self.speed = 7
         self.image = grenade_img
+        self.grenade_fx = grenade_fx
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.width = self.image.get_width()
@@ -44,6 +45,7 @@ class Grenade(pygame.sprite.Sprite):
         self.timer -= 1
         if self.timer <= 0:
             self.kill()
+            self.grenade_fx.play()
             explosion = Explosion(self.rect.x, self.rect.y, 0.5)
             explosion_group.add(explosion)
             if abs(self.rect.centerx - player.rect.centerx) < TILE_SIZE * 2 and abs(self.rect.centery - player.rect.centery) < TILE_SIZE * 2:

@@ -129,7 +129,7 @@ while run:
                 player.shoot(bullet_img, shot_fx, sprite_groups)
             # throw grenades
             elif grenade and grenade_thrown == False and player.grenades > 0:
-                grenade = Grenade(player.rect.centerx + (0.5 * player.rect.size[0] * player.direction), player.rect.top, player.direction, grenade_img, grenade_config)
+                grenade = Grenade(player.rect.centerx + (0.5 * player.rect.size[0] * player.direction), player.rect.top, player.direction, grenade_img, grenade_fx,grenade_config)
                 sprite_groups.grenade_group.add(grenade)
                 # reduce grenades
                 player.grenades -= 1
