@@ -1,4 +1,3 @@
-import pygame
 from pygame import mixer
 import csv
 from settings import *
