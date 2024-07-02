@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5021c284-03ec-4270-af4c-1bedd8977412" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Shooter-main/load_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/load_resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shooter-main/Shooter.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shooter-main/shooter_tut13.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shooter-main/codigo_original.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
       <workItem from="1719886534261" duration="123000" />
       <workItem from="1719933818351" duration="172000" />
       <workItem from="1719934302496" duration="1263000" />
-      <workItem from="1719956242004" duration="1134000" />
+      <workItem from="1719956242004" duration="1778000" />
     </task>
     <servers />
   </component>
